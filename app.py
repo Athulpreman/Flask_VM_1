@@ -37,8 +37,8 @@ def add():
     email = request.form['email']
     print(name,email)
     cur = mysql.cursor() #create a connection to the SQL instance
-    s='''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(name,email)
-    app.logger.info(s)
+    s='''INSERT INTO students(studentName, email) VALUES(?,?);'''
+    app.logger.info(s,name,email)
     cur.execute(s)
     mysql.commit()
   else:
